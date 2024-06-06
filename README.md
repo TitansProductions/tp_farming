@@ -4,7 +4,7 @@
 
 ### EXPORTS
 
-@HasAttachedEntityBucket
+`@HasAttachedEntityBucket`
 Why using this export? This export can be used for scripts to prevent breaking the animation and the bucket attachment if the players are breaking it in purpose.
 
 ```lua
