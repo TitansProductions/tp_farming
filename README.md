@@ -4,6 +4,5 @@
 
 ```lua
 
--- returns boolean and entity id.
-exports.tp_farming:HasAttachedEntityBucket()
+exports.tp_farming:HasAttachedEntityBucket() -- returns boolean (true / false) and the entity id if boolean is true.
 ```
