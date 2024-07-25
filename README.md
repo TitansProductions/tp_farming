@@ -12,3 +12,16 @@ exports.tp_farming:HasAttachedEntityBucket() -- returns boolean (true / false) a
 ```
 
 ### EVENTS
+
+
+```lua
+
+-- @param plantId : Returns Integer
+-- @param plantType : Returns String
+-- @param location (coords) : Returns Table
+
+RegisterNetEvent("tp_farming:client:plantedPlantType")
+AddEventHandler("tp_farming:client:plantedPlantType", function(plantId, plantType, location)
+    -- todo nothing
+end)
+```
