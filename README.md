@@ -17,7 +17,7 @@ exports.tp_farming:HasAttachedEntityBucket() -- returns boolean (true / false) a
 Returns true if the player does any action related to anything.
 
 ```lua
-exports.tp_farming:HasAttachedEntityBucket() -- returns boolean (true / false) and the entity id if boolean is true.
+exports.tp_farming:IsBusy() -- returns boolean (true / false) and the entity id if boolean is true.
 ```
 
 ### EVENTS
