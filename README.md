@@ -5,7 +5,16 @@
 ### EXPORTS
 
 `@HasAttachedEntityBucket`
-Why using this export? This export can be used for scripts to prevent breaking the animation and the bucket attachment if the players are breaking it in purpose.
+Why using this export? This export can be used for scripts to prevent breaking the animation and the bucket attachment if the players are breaking it in purpose or when having river scripts and both are interacting to each other.
+
+Returns nil if there is no Attached Bucket, otherwise it will return the Entity (Client).
+
+```lua
+exports.tp_farming:HasAttachedEntityBucket() -- returns boolean (true / false) and the entity id if boolean is true.
+```
+
+`@IsBusy`
+Returns true if the player does any action related to anything.
 
 ```lua
 exports.tp_farming:HasAttachedEntityBucket() -- returns boolean (true / false) and the entity id if boolean is true.
