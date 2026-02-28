@@ -47,7 +47,7 @@ end)
     TriggerServerEvent("tp_farming:updateWagonByNetworkId", networkId, 'REGISTER', { model, water_capacity, id }) -- client > server
 ```
 
-This is the code it is used on tpz_stables for registering a wagon:
+1. This is the code it is used on tpz_stables for registering a wagon:
 
 ```lua
 
@@ -69,4 +69,28 @@ This is the code it is used on tpz_stables for registering a wagon:
 
 For more understanding of the code: https://github.com/TPZ-CORE/tpz_stables/blob/main/tpz_stables/client/tp-client_wagons.lua
 
+2. After registering properly, the only thing is left is editing `tp_farming/server/tp-server_escrow_allow.lua` file on `UpdateWagonWaterCapacity` function (this is what we also use for tpz_stables).
 
+```lua
+/*
+    ~ TIP ~
+
+    In case you don't have a wagon_id, you can check through database the model and get from the source the identifier and character identifier
+    and update that wagon
+
+    Example: update wagons set capacity where identifier = identifier and charidentifier = charidentifier and model = model.
+
+    (!) Keep in mind, this is a poor way to do it because this wagon might be from someone else player and not his own - if this is the case, it won't work.
+*/
+
+-- @param model    : returns the wagon model name.
+-- @param wagon_id : returns the registered wagon id from your stable script, if not registered, it will return as 0.
+-- @param capacity : returns the updated capacity of the water.
+
+UpdateWagonWaterCapacity = function(source, model, wagon_id, capacity)
+    wagon_id = tonumber(wagon_id)
+    exports.ghmattimysql:execute("UPDATE `wagons` SET `water_capacity` = @water_capacity WHERE `id` = @id ", { ['id'] = wagon_id,  ['water_capacity'] = capacity })
+end
+```
+
+   
