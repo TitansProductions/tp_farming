@@ -93,4 +93,17 @@ UpdateWagonWaterCapacity = function(source, model, wagon_id, capacity)
 end
 ```
 
-   
+## Configuration Explanation
+
+### Plant Configurations
+
+Each plant can have its own growth time duration, temperature min-max values, fertilizers and rewards.
+
+
+__Growth / Ageing:__
+
+The plant growth - ageing is based in **minutes** and only (not in-game time). The ones you have to modify based on the existing or new plant is `GrowthAge`, `GrowthPlantStages` and `MaxPlantAge`.
+
+1. `GrowthAge` : The growth age is the total age of a plant to reach 100% growth (for receiving - collecting the rewards). For example, if you want the total growth of this plant to be in 1 hour, you set `60` (which is 1 hour in minutes).
+
+2. `MaxPlantAge` : The max age of the plant (not growth) - must be greater than `GrowthAge` ( > 60 ). This `MaxPlantAge` option is to remove completely a plant after reaching 100% in case it is never picked up by any player. So if the value is at `80` (which is greater than 60), the plant will die and be removed completely by the system after 1 hour and 20 minutes.
