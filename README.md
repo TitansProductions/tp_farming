@@ -96,7 +96,7 @@ end)
         end
 ```
 
-For more understanding of the code: https://github.com/TPZ-CORE/tpz_stables/blob/main/tpz_stables/client/tp-client_wagons.lua
+For more understanding of the code: https://github.com/TPZ-CORE/tpz_stables/blob/main/tpz_stables/client/tp-client_wagons.lua (line 579)
 
 2. After registering properly, the only thing is left is editing `tp_farming/server/tp-server_escrow_allow.lua` file on `UpdateWagonWaterCapacity` function (this is what we also use for tpz_stables).
 
