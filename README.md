@@ -78,6 +78,8 @@ end)
 
 1. This is the code it is used on tpz_stables for registering a wagon:
 
+<img width="719" height="74" alt="image" src="https://github.com/user-attachments/assets/70f4b621-cde1-4abb-b18b-376702b69bc9" />
+
 ```lua
 
 		if Config.tp_farming.Enabled then
