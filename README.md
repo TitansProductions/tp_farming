@@ -31,7 +31,7 @@ For creating a plant growth stage, we start from `0` (age) up to `GrowthAge` whi
 
 ## DEVELOPMENT API
 
-### EXPORTS
+### Exports
 
 `@HasAttachedEntityBucket`
 Why using this export? This export can be used for scripts to prevent breaking the animation and the bucket attachment if the players are breaking it in purpose or when having river scripts and both are interacting to each other.
@@ -49,8 +49,9 @@ Returns true if the player does any action related to anything.
 exports.tp_farming:IsBusy() -- returns boolean (true / false) and the entity id if boolean is true.
 ```
 
-### EVENTS
+### Events
 
+1. The specified event below `tp_farming:client:plantedPlantType` is used mostly by server owners / developers for adding level experience on their scripts once a plant is placed.
 
 ```lua
 
@@ -58,7 +59,7 @@ exports.tp_farming:IsBusy() -- returns boolean (true / false) and the entity id 
 -- @param plantType : Returns String
 -- @param location (coords) : Returns Table
 
-RegisterNetEvent("tp_farming:client:plantedPlantType")
+RegisterNetEvent("tp_farming:client:plantedPlantType") -- this is a client event
 AddEventHandler("tp_farming:client:plantedPlantType", function(plantId, plantType, location)
     -- todo nothing
 end)
