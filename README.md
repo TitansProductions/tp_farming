@@ -37,7 +37,9 @@ end)
 
 ## How to use / register specific water wagons from stable script to ours
 
-- Use the following event on your stable script for registering the wagon properly for receiving or updating the data related to the water capacity.
+- Use the following event on your stable script for registering the wagon properly for receiving or updating the data related to the water capacity. This event is triggered only once and must be triggered when spawning the vehicle.
+
+The water capacity must be added on the wagons database and be taken / loaded when spawning the vehicle in order to load it properly through the trigger event.
 
 ```lua
     - @param networkId : requires the networked id of the spawned vehicle (wagon)
