@@ -1,5 +1,34 @@
 # TP Farming
 
+## Configuration Explanation
+
+### Plant Configurations
+
+Each plant can have its own growth time duration, temperature min-max values, fertilizers and rewards.
+
+
+__Growth / Ageing:__
+
+The plant growth - ageing is based in **minutes** and only (not in-game time). The ones you have to modify based on the existing or new plant is `GrowthAge`, `GrowthPlantStages` and `MaxPlantAge`.
+
+1. `GrowthAge` : The growth age is the total age of a plant to reach 100% growth (for receiving - collecting the rewards). For example, if you want the total growth of this plant to be in 1 hour, you set `60` (which is 1 hour in minutes).
+
+2. `MaxPlantAge` : The max age of the plant (not growth) - must be greater than `GrowthAge` ( > 60 ). This `MaxPlantAge` option is to remove completely a plant after reaching 100% in case it is never picked up by any player. So if the value is at `80` (which is greater than 60), the plant will die and be removed completely by the system after 1 hour and 20 minutes.
+
+3. `GrowthPlantStages` : This option is a bit tricky and needs some understanding. I have made this option in order to provide a tricky feature for server owners to be able to create plant growth stages. Unfortunately, there is no other way unless you have multiple plant objects of the same type (custom of course) in your server, then it can be easier, but for those who don't have and want to use in-game plant objects, this is the most easiest way.
+
+__Example & Explanation:__
+
+```lua
+        GrowthPlantStages = {
+            {Model = 's_inv_wildmint01x', Age = 0,    PlacementHeight = 0.7}, -- Lowest Age
+            {Model = 's_inv_wildmint01x', Age = 30,  PlacementHeight = 0.0},
+            {Model = 'p_tree_orange_01',  Age = 60,  PlacementHeight = 0.5}, -- Highest Age
+        },
+```
+
+For creating a plant growth stage, we start from `0` (age) up to `GrowthAge` which is `60` minutes (1 hour) as we mentioned above. Then, in game, since we know what object we want to use, the `PlacementHeight` is the Z position of the object (plant) which makes the plant to be placed higher or lower in the ground - with this way we create a "fake" growth.
+
 ## DEVELOPMENT API
 
 ### EXPORTS
@@ -92,32 +121,3 @@ UpdateWagonWaterCapacity = function(source, model, wagon_id, capacity)
     exports.ghmattimysql:execute("UPDATE `wagons` SET `water_capacity` = @water_capacity WHERE `id` = @id ", { ['id'] = wagon_id,  ['water_capacity'] = capacity })
 end
 ```
-
-## Configuration Explanation
-
-### Plant Configurations
-
-Each plant can have its own growth time duration, temperature min-max values, fertilizers and rewards.
-
-
-__Growth / Ageing:__
-
-The plant growth - ageing is based in **minutes** and only (not in-game time). The ones you have to modify based on the existing or new plant is `GrowthAge`, `GrowthPlantStages` and `MaxPlantAge`.
-
-1. `GrowthAge` : The growth age is the total age of a plant to reach 100% growth (for receiving - collecting the rewards). For example, if you want the total growth of this plant to be in 1 hour, you set `60` (which is 1 hour in minutes).
-
-2. `MaxPlantAge` : The max age of the plant (not growth) - must be greater than `GrowthAge` ( > 60 ). This `MaxPlantAge` option is to remove completely a plant after reaching 100% in case it is never picked up by any player. So if the value is at `80` (which is greater than 60), the plant will die and be removed completely by the system after 1 hour and 20 minutes.
-
-3. `GrowthPlantStages` : This option is a bit tricky and needs some understanding. I have made this option in order to provide a tricky feature for server owners to be able to create plant growth stages. Unfortunately, there is no other way unless you have multiple plant objects of the same type (custom of course) in your server, then it can be easier, but for those who don't have and want to use in-game plant objects, this is the most easiest way.
-
-__Example & Explanation:__
-
-```lua
-        GrowthPlantStages = {
-            {Model = 's_inv_wildmint01x', Age = 0,    PlacementHeight = 0.7}, -- Lowest Age
-            {Model = 's_inv_wildmint01x', Age = 30,  PlacementHeight = 0.0},
-            {Model = 'p_tree_orange_01',  Age = 60,  PlacementHeight = 0.5}, -- Highest Age
-        },
-```
-
-For creating a plant growth stage, we start from `0` (age) up to `GrowthAge` which is `60` minutes (1 hour) as we mentioned above. Then, in game, since we know what object we want to use, the `PlacementHeight` is the Z position of the object (plant) which makes the plant to be placed higher or lower in the ground - with this way we create a "fake" growth.
