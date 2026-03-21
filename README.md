@@ -1,6 +1,5 @@
-# TP Farming
 
-## PLANT CONFIGURATIONS
+# PLANT CONFIGURATIONS
 
 Each plant can have its own growth time duration, temperature min-max values, fertilizers and rewards.
 
@@ -26,7 +25,7 @@ __Example & Explanation:__
 
 For creating a plant growth stage, we start from `0` (age) up to `GrowthAge` which is `60` minutes (1 hour) as we mentioned above. Then, in game, since we know what object we want to use, the `PlacementHeight` is the Z position of the object (plant) which makes the plant to be placed higher or lower in the ground - with this way we create a "fake" growth.
 
-## DEVELOPMENT API
+# DEVELOPMENT API
 
 ### Exports
 
